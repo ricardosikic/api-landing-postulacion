@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Article, Category
 # from rest_framework import generics cambiado x viewsets
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets
 from .permissions import IsAuthorOrReadOnly
 from .serializers import ArticleSerializer, CategorySerializer
 from django.contrib.auth import get_user_model
@@ -18,7 +18,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
 class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAdminUser,)
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 

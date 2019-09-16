@@ -3,13 +3,14 @@ from .models import Article, Category
 # from rest_framework import generics cambiado x viewsets
 from rest_framework import viewsets
 from .permissions import IsAuthorOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 from .serializers import ArticleSerializer, CategorySerializer
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthorOrReadOnly,)
+    permission_classes = (IsAuthorOrReadOnly, IsAuthenticated)
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 

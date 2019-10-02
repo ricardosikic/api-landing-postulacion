@@ -6,6 +6,7 @@ from .views import ArticleViewSet, CategoryViewSet, UserViewSet
 
 router = SimpleRouter()
 router.register('users', UserViewSet, base_name='users')
+router.register('categories', CategoryViewSet)
 router.register('', ArticleViewSet, base_name='articles')
 
 urlpatterns = router.urls

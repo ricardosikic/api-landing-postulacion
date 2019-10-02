@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.schemas import get_schema_view #nuevo
 from rest_framework.documentation import include_docs_urls #nuevo
+from django.conf import settings #nuevo para subida de imagenes
+from django.conf.urls.static import static #nuevo para subida de imagenes
 
 schema_view = get_schema_view(title='Blog Api') #nuevo
 API_TITLE = 'Blog Api'
@@ -30,4 +32,5 @@ urlpatterns = [
     path('api/rest-auth/registration/', include('rest_auth.registration.urls')),
     path('schema/', schema_view), #nuevo
     path('docs/', include_docs_urls(title='Blog Api')), #nuevo
-]
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
